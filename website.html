@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Responsive Navigation Bar</title>
+
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+    
+        nav {
+            background-color: #4b3fe4;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        
+         hamburger-menu {
+            font-size: 28px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+        }
+
+        
+        #nav-links {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+            list-style: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #4b3fe4;
+        }
+
+        #nav-links.open {
+            display: flex;
+        }
+
+        #nav-links li a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+        }
+
+        #nav-links li a:hover {
+            background-color: #3529b8;
+        }
+
+        
+        @media (min-width: 768px) {
+
+            nav {
+                justify-content: flex-start;
+                gap: 30px;
+            }
+
+            #hamburger-menu {
+                display: none;
+            }
+
+            #nav-links {
+                display: flex;
+                flex-direction: row;
+                position: static;
+                width: auto;
+                gap: 20px;
+                background-color: transparent;
+            }
+        }
+
+        
+        main {
+            padding: 30px 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">MyWebsite</div>
+    
+        <button id="hamburger-menu" aria-label="Toggle navigation"
+                aria-expanded="false">
+            ☰
+        </button>
+
+        <ul id="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h1>Welcome to the Website</h1>
+        <p>
+            Resize your browser window to see the navigation bar
+            change from a mobile to a desktop view.
+        </p>
+    </main>
+
+    <script>
+        const hamburgerMenu = document.getElementById("hamburger-menu");
+        const navLinks = document.getElementById("nav-links");
+
+        hamburgerMenu.addEventListener("click", function () {
+            navLinks.classList.toggle("open");
+
+            const isOpen = navLinks.classList.contains("open");
+            hamburgerMenu.setAttribute("aria-expanded", isOpen);
+        });
+    </script>
+
+</body>
+</html>
+
